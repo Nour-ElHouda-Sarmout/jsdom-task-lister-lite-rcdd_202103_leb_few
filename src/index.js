@@ -1,8 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
   // your code here
-  let form = document.getElementById("create-task-form");
-  form.addEventListener("submit",function(event) {
-         document.getElementById("output-box").innerHTML += "Sorry! <code>preventDefault()</code> won't let you check this!<br>";
-         event.preventDefault();
-}, false);)
+  function addTask(event)
+   {
+     event.preventDefault();
+     const task = document.getElementById("new-task-description").value;
+     if(task!=="")
+     {
+       document.querySelector("ul").insertAdjacentHTML("beforeend",`<div class="container"><li>${task}</li><button class="buttons" type="button">x</button></div>`);
+       document.getElementById("new-task-description").value = "";
+       document.getElementsByTagName("button")[document.getElementsByTagName("button").length - 1].addEventListener("click",removeTask);
+     }
+   }
+ 
+   function removeTask(event)
+   {
+     event.currentTarget.parentNode.remove();
+   }
+ 
+   document.querySelector('input[type="submit"]').addEventListener("click",addTask);
 });
