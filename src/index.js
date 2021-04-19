@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
        document.getElementsByTagName("button")[document.getElementsByTagName("button").length - 1].addEventListener("click",removeTask);
      }
    }
- 
+
    function removeTask(event)
    {
      event.currentTarget.parentNode.remove();
    }
- 
+
    document.querySelector('input[type="submit"]').addEventListener("click",addTask);
 });
